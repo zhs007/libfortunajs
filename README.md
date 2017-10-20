@@ -1,0 +1,2 @@
+# libfortunajs
+libfortuna for nodejs
