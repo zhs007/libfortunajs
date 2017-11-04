@@ -1,2 +1,2 @@
-var libfortuna = require('bindings')('libfortuna');
-module.exports = libfortuna;
+var fortuna = require('bindings')('fortuna');
+module.exports = fortuna;
