@@ -34,7 +34,15 @@
 
 #include "c.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void		fortuna_get_bytes(unsigned len, uint8 *dst);
 void		fortuna_add_entropy(const uint8 *data, unsigned len);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
