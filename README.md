@@ -11,7 +11,7 @@ npm i libfortunajs --save
 
 ------
 
-update infos:
+update
 
 - 1.2 - add randomBuf
 - 1.1 - add addEntropy
