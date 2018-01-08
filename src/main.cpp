@@ -12,6 +12,15 @@ NAN_MODULE_INIT(Init) {
         
     Nan::Set(target, Nan::New("randomIntArr").ToLocalChecked(),
         Nan::GetFunction(Nan::New<v8::FunctionTemplate>(randomIntArr)).ToLocalChecked()); 
+
+    Nan::Set(target, Nan::New("addEntropy").ToLocalChecked(),
+        Nan::GetFunction(Nan::New<v8::FunctionTemplate>(addEntropy)).ToLocalChecked()); 
+
+    Nan::Set(target, Nan::New("addEntropyInt").ToLocalChecked(),
+        Nan::GetFunction(Nan::New<v8::FunctionTemplate>(addEntropyInt)).ToLocalChecked()); 
+
+    Nan::Set(target, Nan::New("randomBuf").ToLocalChecked(),
+        Nan::GetFunction(Nan::New<v8::FunctionTemplate>(randomBuf)).ToLocalChecked());                         
 }
 
 NODE_MODULE(libfortuna, Init)

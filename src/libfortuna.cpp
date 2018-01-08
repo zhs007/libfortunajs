@@ -115,3 +115,82 @@ void randomIntArr(const Nan::FunctionCallbackInfo<v8::Value>& info) {
 
     info.GetReturnValue().Set(arr);
 }
+
+// addEntropyInt(num)
+void addEntropyInt(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+    if (info.Length() != 1) {
+        Nan::ThrowTypeError("addEntropyInt: Wrong number of arguments.");
+
+        return;
+    }
+
+    if (!info[0]->IsNumber()) {
+        Nan::ThrowTypeError("addEntropyInt: Wrong arguments.");
+
+        return;
+    }
+
+    v8::Local<v8::Number> num = info[0].As<v8::Number>();
+    if (num->Value() <= 0) {
+        Nan::ThrowTypeError("addEntropyInt: Invalid num velue.");
+        
+        return;
+    }
+
+    unsigned int numval = (unsigned int)num->Value();
+
+    fortuna_add_entropy((uint8*)&numval, 4);
+}
+
+// addEntropy(uint8buf)
+void addEntropy(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+    if (info.Length() != 1) {
+        Nan::ThrowTypeError("addEntropy: Wrong number of arguments.");
+
+        return;
+    }
+
+    if (!info[0]->IsUint8Array()) {
+        Nan::ThrowTypeError("addEntropy: Wrong arguments.");
+
+        return;
+    }
+
+    v8::Local<v8::TypedArray> ta = info[0].As<v8::TypedArray>();
+    Nan::TypedArrayContents<uint8> vuint8(ta);
+
+    fortuna_add_entropy(*vuint8, vuint8.length());
+}
+
+// randomBuf(uint8len)
+void randomBuf(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+    if (info.Length() != 1) {
+        Nan::ThrowTypeError("randomBuf: Wrong number of arguments.");
+
+        return;
+    }
+
+    if (!info[0]->IsNumber()) {
+        Nan::ThrowTypeError("randomBuf: Wrong arguments.");
+
+        return;
+    }
+
+    v8::Local<v8::Number> len = info[0].As<v8::Number>();
+
+    if (len->Value() <= 0) {
+        Nan::ThrowTypeError("randomBuf: Invalid len velue.");
+        
+        return;
+    }
+
+    int lenval = (int)len->Value();
+
+    v8::Local<v8::ArrayBuffer> buffer = v8::ArrayBuffer::New(v8::Isolate::GetCurrent(), lenval);
+    v8::Local<v8::Uint8Array> result = v8::Uint8Array::New(buffer, 0, lenval);
+    Nan::TypedArrayContents<uint8> vuint8(result);
+
+    fortuna_get_bytes(lenval, *vuint8);
+
+    info.GetReturnValue().Set(result);
+}
