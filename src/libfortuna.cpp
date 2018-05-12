@@ -10,6 +10,7 @@ void random(const Nan::FunctionCallbackInfo<v8::Value>& info) {
 }
 
 // randomInt(max)
+// return [0, max)
 void randomInt(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     if (info.Length() != 1) {
         Nan::ThrowTypeError("randomInt: Wrong number of arguments.");
@@ -33,7 +34,13 @@ void randomInt(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     unsigned int maxval = (unsigned int)max->Value();
 
     unsigned int cr = 0;
-    fortuna_get_bytes(4, (uint8*)&cr);
+    unsigned int MAX_RANGE = 0xffffffffffffffff;
+    unsigned int limit = MAX_RANGE – (MAX_RANGE % maxval);
+    
+    do {
+        fortuna_get_bytes(4, (uint8*)&cr);
+    } while (cr >= limit);
+    
     v8::Local<v8::Number> num = Nan::New<v8::Number>(cr % maxval);
     info.GetReturnValue().Set(num);
 }
@@ -104,12 +111,20 @@ void randomIntArr(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     int lenval = (int)len->Value();
     unsigned int maxval = (unsigned int)max->Value();
 
+    unsigned int MAX_RANGE = 0xffffffffffffffff;
+    unsigned int limit = MAX_RANGE – (MAX_RANGE % maxval);
+
     v8::Local<v8::Array> arr = Nan::New<v8::Array>();
     
     for (int i = 0; i < lenval; ++i) {
         unsigned int cr = 0;
-        fortuna_get_bytes(4, (uint8*)&cr);
+        
+        do {
+            fortuna_get_bytes(4, (uint8*)&cr);
+        } while (cr >= limit);
+        
         v8::Local<v8::Number> num = Nan::New<v8::Number>(cr % maxval);
+
         arr->Set(i, num);
     }
 
