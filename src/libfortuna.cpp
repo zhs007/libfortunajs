@@ -34,8 +34,8 @@ void randomInt(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     unsigned int maxval = (unsigned int)max->Value();
 
     unsigned int cr = 0;
-    unsigned int MAX_RANGE = 0xffffffffffffffff;
-    unsigned int limit = MAX_RANGE – (MAX_RANGE % maxval);
+    unsigned long long MAX_RANGE = ((unsigned long long)1) << 32;
+    unsigned long long limit = MAX_RANGE – (MAX_RANGE % maxval);
     
     do {
         fortuna_get_bytes(4, (uint8*)&cr);
@@ -111,8 +111,8 @@ void randomIntArr(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     int lenval = (int)len->Value();
     unsigned int maxval = (unsigned int)max->Value();
 
-    unsigned int MAX_RANGE = 0xffffffffffffffff;
-    unsigned int limit = MAX_RANGE – (MAX_RANGE % maxval);
+    unsigned long long MAX_RANGE = ((unsigned long long)1) << 32;
+    unsigned long long limit = MAX_RANGE – (MAX_RANGE % maxval);
 
     v8::Local<v8::Array> arr = Nan::New<v8::Array>();
     
