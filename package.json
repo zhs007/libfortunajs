@@ -1,6 +1,6 @@
 {
   "name": "libfortuna",
-  "version": "1.2.13",
+  "version": "1.2.15",
   "description": "libfortuna for nodejs",
   "main": "index.js",
   "scripts": {

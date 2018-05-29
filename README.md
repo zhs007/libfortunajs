@@ -13,6 +13,7 @@ npm i libfortunajs --save
 
 update
 
+- 1.2.15 - fix scaling of rng bug
 - 1.2.13 - fix scaling of rng bug
 - 1.2.12 - fix scaling of rng bug
 - 1.2 - add randomBuf
