@@ -52,9 +52,15 @@ for (let ii = 0; ii < this.axisnums; ++ii) {
 
 ### update
 
-- 1.2.15 - fix scaling of rng bug
-- 1.2.13 - fix scaling of rng bug
-- 1.2.12 - fix scaling of rng bug
-- 1.2 - add randomBuf
-- 1.1 - add addEntropy
-- 1.0 - add random/randomInt
+- 1.2.15 
+  - fix scaling of rng bug
+- 1.2.13 
+  - fix scaling of rng bug
+- 1.2.12 
+  - fix scaling of rng bug
+- 1.2 
+  - add randomBuf
+- 1.1 
+  - add addEntropy
+- 1.0 
+  - add random/randomInt
