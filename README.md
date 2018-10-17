@@ -1,4 +1,4 @@
-# fortuna random algorithm
+# Fortuna Random Algorithm
 
 libfortunajs has been certified by iTech's random algorithm.
 
