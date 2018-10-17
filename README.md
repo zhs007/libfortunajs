@@ -2,13 +2,13 @@
 
 libfortunajs has been certified by iTech's random algorithm.
 
-### libfortuna
+### About libfortuna
 
 libfortuna uses code from the [PostgreSQL](http://www.postgres.org/) database project.
 
 The original source location (in the postgres source tree) is contrib/pgcrypto. Also, parts of src/include/postgres.h and src/include/c.h.
 
-### libfortunajs
+### About libfortunajs
 
 [libfortunajs](https://github.com/zhs007/libfortunajs) is a nodejs c++ addon project. 
 
@@ -30,7 +30,7 @@ Nodejs version 8.x is recommended.
 
 except nodejs, you need to python 2.x, gcc 4.9 (on linux), and on mac osx also need xcode, on windows recommended to [node-gyp](https://github.com/nodejs/node-gyp) installation instructions.
 
-### game
+### Samples
 
 ```
 const libfortuna = require('libfortuna');
@@ -50,7 +50,7 @@ for (let ii = 0; ii < this.axisnums; ++ii) {
 }
 ```
 
-### update
+### Update log
 
 - 1.2.15 
   - fix scaling of rng bug
