@@ -32,7 +32,7 @@ except nodejs, you need to python 2.x, gcc 4.9 (on linux), and on mac osx also n
 
 ### Samples
 
-```
+``` js
 const libfortuna = require('libfortuna');
 
 function randomInt(max) {
@@ -44,7 +44,7 @@ exports.randomInt = randomInt;
 
 When the actual game wheel is random, we call it this way
 
-```
+``` js
 for (let ii = 0; ii < this.axisnums; ++ii) {
     lstLastSymbol[ii] = base.randomInt(lstSymbol[ii].length);
 }
