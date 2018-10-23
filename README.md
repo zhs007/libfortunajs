@@ -1,4 +1,4 @@
-# Fortuna Random Algorithm
+# Fortuna Random Algorithm For Node.js
 
 libfortunajs has been certified by iTech's random algorithm.
 
